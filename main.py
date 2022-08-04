@@ -8,13 +8,26 @@
 # Task, kill, meeting, eject, repeat
 
 from match import Match
+from amogus import Amogus
 
 if __name__ == "__main__":
     match = Match()
 
-    print(match.choose_map())
-    print(match.giveTasks())
-    players = match.player_assign()
-    print(players[1][4])
-    #match.startMatch()
+    match.choose_map()
     
+    match.player_assign()
+    match.giveTasks()
+    #print(players[1][4])
+    #match.startMatch()
+    #print(match.sus_color, match.player_color) Test colors for sus and crewmates
+    
+    #total_sus = [("sus"+i) = Match(), for i in range(0,len(match.sus_color))]
+
+    #total_crew = [("crew"+i) = Match(), for i in range(0,len(match.player_color))]
+
+    #match.assignColor()
+
+    #match.assignColor()
+    #match.assignColor()
+    #print(match.sus_color, match.player_color)
+
