@@ -13,21 +13,14 @@ from amogus import Amogus
 if __name__ == "__main__":
     match = Match()
 
-    match.choose_map()
+    match.choose_map() #First thing to do when starting the game. 
     
-    match.player_assign()
-    match.giveTasks()
-    #print(players[1][4])
-    #match.startMatch()
-    #print(match.sus_color, match.player_color) Test colors for sus and crewmates
-    
-    #total_sus = [("sus"+i) = Match(), for i in range(0,len(match.sus_color))]
+    match.player_assign() #Second things to do.
+    match.giveTasks() #Third thing to do. 
+    match.assignColor() #Fourth.
 
-    #total_crew = [("crew"+i) = Match(), for i in range(0,len(match.player_color))]
+    print(match.sus_color, match.player_color)
+    match.startMatch() #Conditions on which the match will be played out. 
+    #match.meeting() #Meeting where a random color is out. 
 
-    #match.assignColor()
-
-    #match.assignColor()
-    #match.assignColor()
-    #print(match.sus_color, match.player_color)
-
+    print(match.current_players)
