@@ -9,9 +9,9 @@ class Match():
         self.tasks = []
         self.tasks_do = []
         self.sus_color = []
-        self.player_color = []
+        self.sus_color = []
         self.counter = 0
-        self.og_players = list(self.player_color + self.sus_color)
+        self.og_players = list(self.sus_color + self.sus_color)
         self.current_players = []
         self.map_options = {
             "Skeld":["Data", "Artifacts", "Reactor", "Calibrate",
@@ -79,8 +79,9 @@ class Match():
         while counter <= 2:
             self.sus_color.append(self.colors.pop(random.randint(0,len(self.colors)-1)))
             counter += 1
-
-        self.player_color = self.colors
+            if counter >= 2:
+                break
+        self.sus_color = self.colors
         #help(player_assign)
         self.current_players = self.og_players
         return
@@ -104,8 +105,8 @@ class Match():
         if self.sus_color == []:
             luck = 2
         else:
-            color = random.randint(0, len(self.player_color)-1)
-            self.player_color.pop(color)
+            color = random.randint(0, len(self.sus_color)-1)
+            self.sus_color.pop(color)
         
     def startMatch(self):
         """
@@ -117,7 +118,7 @@ class Match():
         Returns:
         None
         """
-        print(f"The match will start on the map {self.map_choice} with {self.sus_color} as the impostors and {self.player_color} as the crewmates.")
+        print(f"The match will start on the map {self.map_choice} with {self.sus_color} as the impostors and {self.sus_color} as the crewmates.")
 
     def meeting(self):
         """
@@ -129,8 +130,8 @@ class Match():
         Returns:
         New list without the ejected crewmate
         """
-
-        unlucky = self.current_players.remove(random.randint(0, len(self.current_players)-1))
+        pass #Not working as of yet
+        unlucky = self.current_players.pop(random.randint(0, len(self.current_players)-1))
         self.current_players.remove(unlucky)
         print(f"{unlucky} has been ejected. ")
         Match.endMatch()
@@ -140,8 +141,9 @@ class Match():
         if len(self.sus_color) == 0:
             print("The match has ended and the crewmates have won. ")
         
-        elif len(self.sus_color) == 2 and len(self.sus_color) == len(self.player_color)+2:
+        elif len(self.sus_color) == 2 and len(self.sus_color) == len(self.sus_color)+2:
             print("The match has ended and the impostors have won. ")
+
         elif len(self.sus_color) == 1 and len(self.sus_color) == len(self.sus_color) + 1:
             print("The match has ended and the impostors have won. ")
 

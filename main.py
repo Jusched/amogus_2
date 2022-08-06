@@ -9,9 +9,12 @@
 
 from match import Match
 from amogus import Amogus
+from sus import Sus
 
 if __name__ == "__main__":
     match = Match()
+    amogus = Amogus()
+    sus = Sus()
 
     match.choose_map() #First thing to do when starting the game. 
     
@@ -19,8 +22,8 @@ if __name__ == "__main__":
     match.giveTasks() #Third thing to do. 
     match.assignColor() #Fourth.
 
-    print(match.sus_color, match.player_color)
+    print(match.sus_color, match.sus_color)
     match.startMatch() #Conditions on which the match will be played out. 
     #match.meeting() #Meeting where a random color is out. 
-
-    print(match.current_players)
+    #sus.kill()
+    #print(match.current_players)
