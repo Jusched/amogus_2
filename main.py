@@ -17,13 +17,14 @@ if __name__ == "__main__":
     sus = Sus()
 
     match.choose_map() #First thing to do when starting the game. 
-    
     match.player_assign() #Second things to do.
     match.giveTasks() #Third thing to do. 
     match.assignColor() #Fourth.
-
-    print(match.sus_color, match.sus_color)
     match.startMatch() #Conditions on which the match will be played out. 
-    #match.meeting() #Meeting where a random color is out. 
-    #sus.kill()
-    #print(match.current_players)
+    print(match.sus_color, match.sus_color)
+    print(match.current_players)
+    #sus._getColor()
+    #print(sus.color)
+    match.meeting() #Meeting where a random color is out. 
+    sus.kill()
+    print(match.colors)

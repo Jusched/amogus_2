@@ -58,7 +58,6 @@ class Match():
         return self.tasks_do
 
 
-
     def player_assign(self):
         """
             Player assignment.
@@ -130,12 +129,11 @@ class Match():
         Returns:
         New list without the ejected crewmate
         """
-        pass #Not working as of yet
-        unlucky = self.current_players.pop(random.randint(0, len(self.current_players)-1))
-        self.current_players.remove(unlucky)
+        
+        unlucky = self.colors.pop(random.randint(0, len(self.colors)-1))
         print(f"{unlucky} has been ejected. ")
-        Match.endMatch()
-        return self.current_players
+        Match.endMatch(self)
+        return self.colors
 
     def endMatch(self):
         if len(self.sus_color) == 0:
