@@ -4,10 +4,13 @@ import random
 class Amogus():
 
     def __init__(self):
-        self.color = str
+        #self.colour = []
         self.task_list = []
 
-    def __getColor(self):
+    def getName(self):
+        self.name = str(input("Type the name you want to have for your player. "))
+
+    def getColor(self):
         """
         Gets a color out of the ones available for the crewmates.
         
@@ -17,10 +20,10 @@ class Amogus():
         self.color (str) = Random color assigned at the start of the match for 1 of the 8 crewmates instances available.
 
         """
-        self.color.append(Match.sus_color(random.randrange(0, len(Match.sus_color)-1)))
+        self.colour.append(self.player_color(random.randint(0, len(self.player_color)-1)))
         return self.color
 
-    def __doTask(self):
+    def _doTask(self):
         """
         Do a random task based on the assigned list of tasks from the Match class. 
 
@@ -43,7 +46,6 @@ class Amogus():
         Returns:
             None
         """
-        pass
         Match.meeting()
 
     

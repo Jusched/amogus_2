@@ -6,26 +6,14 @@ class Sus(Amogus):
 
     def __init__(self):
         self.name = str
-        self.color = str
+        self.colors = []
+        self.task_list = None
 
-    def _getColor(self):
-        """
-        Gets a color out of the ones available for the impostors.
-
-        Parameters:
-        None
-
-        Returns:
-        self.color (str) = Random color assigned at the start of the match for 1 of the 2 impostor instances available.
-        
-        """
-        self.color.append(Match.sus_color(random.randint(0, len(Match.sus_color)-1)))
-        return self.color
-
-    def kill(self):
-        pass #Not working as of today. 
-        dead = Match.colors.pop(random.randint(0, len(Match.colors)-1))
-        Match.colors.remove(dead)
+    def kill(self, player_color):
+        #Not working as of today. 
+        dead = player_color.pop(random.randint(0, len(player_color)-1))
+        #player_color.remove(dead)
         print(f"{dead} has been killed. ")
-        Match.endMatch()
-        return Match.colors
+        #Match.endMatch(self)
+        print(player_color)
+        return 

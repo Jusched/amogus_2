@@ -9,10 +9,9 @@ class Match():
         self.tasks = []
         self.tasks_do = []
         self.sus_color = []
-        self.sus_color = []
+        self.player_color = []
         self.counter = 0
         self.og_players = list(self.sus_color + self.sus_color)
-        self.current_players = []
         self.map_options = {
             "Skeld":["Data", "Artifacts", "Reactor", "Calibrate",
             "Toilet", "Decontaminate", "Key turn"
@@ -78,34 +77,12 @@ class Match():
         while counter <= 2:
             self.sus_color.append(self.colors.pop(random.randint(0,len(self.colors)-1)))
             counter += 1
-            if counter >= 2:
-                break
-        self.sus_color = self.colors
+
+        self.player_color = self.colors
         #help(player_assign)
-        self.current_players = self.og_players
+        print(self.player_color, self.sus_color)
         return
 
-    def assignColor(self):
-        """
-        Assigns a color based if it was chosen to be a impostor or crewmate. 
-
-        Parameters:
-        None
-
-        Returns:
-        color (str): Color which is assigned randomnly after assigning randomnly if the player will be a impostor or crewmate.
-        
-        """
-        luck = random.randint(1,2)
-        if luck == 1:
-            color = random.randint(0, len(self.sus_color)-1)
-            self.sus_color.pop(color)
-            
-        if self.sus_color == []:
-            luck = 2
-        else:
-            color = random.randint(0, len(self.sus_color)-1)
-            self.sus_color.pop(color)
         
     def startMatch(self):
         """
@@ -117,7 +94,7 @@ class Match():
         Returns:
         None
         """
-        print(f"The match will start on the map {self.map_choice} with {self.sus_color} as the impostors and {self.sus_color} as the crewmates.")
+        print(f"The match will start on the map {self.map_choice} with {self.sus_color} as the impostors and {self.player_color} as the crewmates.")
 
     def meeting(self):
         """
@@ -127,22 +104,34 @@ class Match():
         None
 
         Returns:
-        New list without the ejected crewmate
+        New list without the ejected player.
         """
         
         unlucky = self.colors.pop(random.randint(0, len(self.colors)-1))
-        print(f"{unlucky} has been ejected. ")
+        print(unlucky)
+        if unlucky in self.sus_color:
+            self.sus_color.remove(unlucky)
+            print(f"{unlucky} has been ejected. ")
+
+        if unlucky in self.player_color:
+            self.player_color.remove(unlucky)
+            print(f"{unlucky} has been ejected. ")
         Match.endMatch(self)
-        return self.colors
+
+        return self.player_color, self.sus_color
 
     def endMatch(self):
+        pass
         if len(self.sus_color) == 0:
             print("The match has ended and the crewmates have won. ")
         
-        elif len(self.sus_color) == 2 and len(self.sus_color) == len(self.sus_color)+2:
+        elif len(self.sus_color) == 2 and len(self.player_color) == 4:
             print("The match has ended and the impostors have won. ")
 
-        elif len(self.sus_color) == 1 and len(self.sus_color) == len(self.sus_color) + 1:
+        elif len(self.sus_color) == 1 and len(self.player_color) == 1:
             print("The match has ended and the impostors have won. ")
 
-        
+        elif len(self.sus_color) == len(self.player_color):
+            print("The match has ended and the impostors have won. ")
+
+        #game = True        
