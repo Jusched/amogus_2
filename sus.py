@@ -12,7 +12,6 @@ class Sus(Amogus):
     def kill(self, player_color):
         #Not working as of today. 
         dead = player_color.pop(random.randint(0, len(player_color)-1))
-        #player_color.remove(dead)
         print(f"{dead} has been killed. ")
         #Match.endMatch(self)
         print(player_color)
