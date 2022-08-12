@@ -1,51 +1,36 @@
-# Main crea el flujo de control de todo. Solo tiene el llamado a una funcion llamado main.
-# Los players deben de tener colores para que sea predefinidos al igual que el numero.  
-# Reducir cantidad de inputs
-# Match se encarga de todo 
-# Random para asignar sus y players aleatoriamente
-# Sabotage y travelVent no van
-# Todo es aleatorio
-# Task, kill, meeting, eject, repeat
-
-from time import sleep
+import random
 from match import Match
 from amogus import Amogus
 from sus import Sus
 
 if __name__ == "__main__":
-    game = True
     
+    game = True
+    match = Match()
+    amogus = Amogus()
+    sus = Sus()
+
+    match.choose_map() #First thing to do when starting the game. 
+    match.player_assign() #Second things to do.
+    match.giveTasks() #Third thing to do. 
+    match.startMatch() #Conditions on which the match will be played out. 
+    print(match.player_color, match.sus_color, "\n")
+
+    task_done = 0
+
     while game:
-            
-        match = Match()
-        amogus = Amogus()
-        sus = Sus()
 
-        #match.choose_map() #First thing to do when starting the game. 
-        #match.player_assign() #Second things to do.
-        #match.giveTasks() #Third thing to do. 
-        #match.assignColor() #Fourth.
-        #match.startMatch() #Conditions on which the match will be played out. 
-        #print(match.player_color, match.sus_color)
-        #sus._getColor()
+        number = random.randint(1,2)
+        if number == 1:
+            sus.kill(match.player_color, match.sus_color)
+            match.meeting()
 
-        timer = 5
-        sleep(timer)
-        #Does something every 5 seconds until the match ends. 
-        #print(sus.color)
-        #match.meeting() #Meeting where a random color is out. 
-        #sus.kill()
-        #print(match.colors, match.sus_color, match.player_color)
+        amogus.doTask(match.tasks_do)
+        task_done += 1
+        match.endMatch(task_done)
 
-
-        sending = Match()
-        sending.player_assign()
-        #sending.assignColor()
-        piv = sending.player_color
-        sus.kill(piv)
-
+        if match.is_over == True:
+            print("Thank your playing. ")
+            break
         
-            
-        #In order to pass attributes, you send one of the instances into 
-        #The other class calling the method with the attributes attached 
-        #From the instance
+        input("Press enter to continue the game. ")

@@ -10,8 +10,8 @@ class Match():
         self.tasks_do = []
         self.sus_color = []
         self.player_color = []
+        self.is_over = False
         self.counter = 0
-        self.og_players = list(self.sus_color + self.sus_color)
         self.map_options = {
             "Skeld":["Data", "Artifacts", "Reactor", "Calibrate",
             "Toilet", "Decontaminate", "Key turn"
@@ -49,7 +49,7 @@ class Match():
         self.tasks_do: List containing 4 randomnly chosen tasks based on self.choice map. 
         """
         total_tasks = self.tasks.copy()
-        while self.counter <= 3:
+        while self.counter <= 4:
             removed = total_tasks.pop(random.randint(0,len(total_tasks)-1))
             self.tasks_do.append(removed)
             self.counter += 1
@@ -108,31 +108,29 @@ class Match():
         """
         
         unlucky = self.colors.pop(random.randint(0, len(self.colors)-1))
-        print(unlucky)
-        if unlucky in self.sus_color:
-            self.sus_color.remove(unlucky)
-            print(f"{unlucky} has been ejected. ")
-
-        if unlucky in self.player_color:
-            self.player_color.remove(unlucky)
-            print(f"{unlucky} has been ejected. ")
-        Match.endMatch(self)
+        print(f"{unlucky} has been ejected. \n")
+        print(self.sus_color, self.player_color)
 
         return self.player_color, self.sus_color
 
-    def endMatch(self):
-        pass
+    def endMatch(self, task_done):
+
         if len(self.sus_color) == 0:
             print("The match has ended and the crewmates have won. ")
-        
-        elif len(self.sus_color) == 2 and len(self.player_color) == 4:
+            self.is_over = True
+
+        elif len(self.sus_color) == 2 and len(self.player_color) == 2:
             print("The match has ended and the impostors have won. ")
+            self.is_over = True
 
         elif len(self.sus_color) == 1 and len(self.player_color) == 1:
             print("The match has ended and the impostors have won. ")
+            self.is_over = True
 
         elif len(self.sus_color) == len(self.player_color):
             print("The match has ended and the impostors have won. ")
-
+            self.is_over = True
         
-        #game = True        
+        elif task_done == 5:
+            print("The match has ended and the crewmates have won. ")
+            self.is_over = True
