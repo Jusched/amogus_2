@@ -12,6 +12,7 @@ if __name__ == "__main__":
     match.choose_map() #First thing to do when starting the game. 
     match.player_assign() #Second things to do.
     match.giveTasks() #Third thing to do. 
+    print("\n")
     match.startMatch() #Conditions on which the match will be played out. 
     print(match.player_color, match.sus_color, "\n")
 
