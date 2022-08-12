@@ -10,6 +10,10 @@ Python 3.8.5
 
 Clone or download repository then ejecute main.py
 
+## Usage
+
+Play a little example of how the real among us game usually plays out. 
+
 ## Acknowledgments
 
  - First ever project I have done as a python dev. 

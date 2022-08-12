@@ -46,7 +46,7 @@ class Match():
         None
 
         Returns:
-        self.tasks_do: List containing 4 randomnly chosen tasks based on self.choice map. 
+        None
         """
         total_tasks = self.tasks.copy()
         while self.counter <= 4:
