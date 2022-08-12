@@ -5,7 +5,6 @@ from sus import Sus
 
 if __name__ == "__main__":
     
-    game = True
     match = Match()
     amogus = Amogus()
     sus = Sus()
@@ -18,10 +17,12 @@ if __name__ == "__main__":
 
     task_done = 0
 
-    while game:
+    while not match.is_over:
 
-        number = random.randint(1,2)
-        if number == 1:
+        input("Press enter to continue the game. ")
+
+        kill_chance = random.randint(0, 1)
+        if kill_chance == 1:
             sus.kill(match.player_color, match.sus_color)
             match.meeting()
 
@@ -31,6 +32,5 @@ if __name__ == "__main__":
 
         if match.is_over == True:
             print("Thank your playing. ")
-            break
         
-        input("Press enter to continue the game. ")
+        
