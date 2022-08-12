@@ -8,11 +8,13 @@ Python 3.8.5
 
 ### Installing
 
-Clone or download repository then ejecute main.py
+git clone https://github.com/Jusched/amogus_2.git
 
 ## Usage
 
-Play a little example of how the real among us game usually plays out. 
+Inside the project folder.
+
+python main.py
 
 ## Acknowledgments
 
