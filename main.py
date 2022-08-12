@@ -1,4 +1,7 @@
+# Native modules
 import random
+
+# Local packages
 from match import Match
 from amogus import Amogus
 from sus import Sus
